@@ -27,6 +27,7 @@ services:
       - node-modules:/app/frontend/node_modules
     ports:
       - "3000:3000"
-
+    restart: always
+    
 volumes:
   node-modules:

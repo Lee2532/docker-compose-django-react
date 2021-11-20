@@ -25,7 +25,10 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'rest_framework',
     'crispy_forms', #css 보기 좋게
+    'account',
 ]
+
+AUTH_USER_MODEL = 'account.User'
 
 
 MIDDLEWARE = [
