@@ -20,14 +20,17 @@ services:
 
     
   frontend:
-    build: ./frontend
-    command: ["npm", "start"]
+    build:
+      context: /frontend # 도커파일이 위치한 위치
+      dockerfile: Dockerfile # 도커파일 이름
     volumes:
+      - /app/frontend/node_modules
       - ./frontend:/app/frontend
-      - node-modules:/app/frontend/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     ports:
       - "3000:3000"
+    stdin_open: true
     restart: always
     
-volumes:
-  node-modules:
+

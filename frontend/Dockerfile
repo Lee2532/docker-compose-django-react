@@ -1,9 +1,12 @@
-FROM node
+FROM node:16.13.0
+
 
 WORKDIR /app/frontend
-COPY package.json /app/frontend
+
+COPY package.json ./
 
 RUN npm install
 
-EXPOSE 3000
-CMD ["npm", "start"]
+COPY ./ ./
+
+CMD ["npm","run" ,"start"]
