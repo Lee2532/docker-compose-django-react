@@ -28,7 +28,7 @@ from django.contrib.auth.models import update_last_login
 class UserLoginSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=20)
     password = serializers.CharField(max_length=128, write_only=True)
-    
+    token = serializers.CharField(max_length=255, read_only=True)
     def validate(self, data):
         username = data.get("username", None)
         password = data.get("password", None)
@@ -43,6 +43,6 @@ class UserLoginSerializer(serializers.Serializer):
         token = Token.objects.get_or_create(user=user)[0].key
         
         return {
-            'email': user.username,
+            'username': user.username,
             'token': token
         }
