@@ -1,22 +1,32 @@
+from logging import log
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import *
 from django.views.generic.edit import FormView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from django.http import JsonResponse
+from rest_framework.permissions import AllowAny
+from .forms import *
+from .serializers import *
 
-class Signup(FormView):
-    template_name = 'account/signup.html'
-    form_class = TestForm
-    success_url = '/login/'
+        
+@api_view(['POST']) 
+@permission_classes([AllowAny])
+def signup(request):
+    serializer = UserSerializer(data=request.data) 
+    if serializer.is_valid(raise_exception=True):
+        serializer.save() # DB 저장
+        return Response(serializer.data, status=201) 
 
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.save()
-        return super().form_valid(form)
-    
-    
-    
-def signin(request):
 
-    form = TestForm()
-    return render(request, 'account/signup.html', {'form': form})
+from django.contrib.auth import authenticate
+
+@api_view(['GET']) 
+@permission_classes([AllowAny])
+def test(request):
+    user = authenticate(username='test8', password='0000')
+    if user is None:
+        data = {'status' : 'user is None'}
+    else:
+        data = {'status' : 'user is Not None'}
+    return JsonResponse(data)
