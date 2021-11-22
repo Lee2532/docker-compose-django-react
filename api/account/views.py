@@ -58,3 +58,8 @@ def logout(request):
     request.user.auth_token.delete()
     logout(request)
     return Response('User Logged out successfully')
+
+class Logout(APIView):
+    def get(self, request, format=None):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)

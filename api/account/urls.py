@@ -8,6 +8,8 @@ urlpatterns = [
     # path('', views.signin, name='main'),
     path('signup/', views.signup, name='signup'),
     path('login/', views.LoginView.as_view(), name='login'),
-    path('test/', views.ExampleView.as_view(), name='test'),
+    path('test/', views.ExampleView.as_view(), name='test'), # token auth login
+    path('logout/', views.Logout.as_view(), name='logout'),
+    
     
 ]
