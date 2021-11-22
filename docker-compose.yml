@@ -18,10 +18,10 @@ services:
     restart: always
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
-    
+
   frontend:
     build:
-      context: /frontend # 도커파일이 위치한 위치
+      context: ./frontend # 도커파일이 위치한 위치
       dockerfile: Dockerfile # 도커파일 이름
     volumes:
       - /app/frontend/node_modules
