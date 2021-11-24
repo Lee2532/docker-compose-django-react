@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from "react-bootstrap";
-import { createuser } from '../../actions/test';
+import { createuser, axiotTest } from '../../actions/test';
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
@@ -20,7 +20,9 @@ export default function Home() {
 
   const handleSubmit = (event:any) => {
     event.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
+    // axiotTest(inputs);
+    createuser(inputs);
   }
 
   return (

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'drf_spectacular',
     'rest_framework',
+    'corsheaders',
     'crispy_forms', #css 보기 좋게
     'account',
 ]
@@ -41,14 +42,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
-
-CORS_ORIGIN_WHITELIST = [
-       'http://host.docker.internal:8000',
-       'http://host.docker.internal:3000',
-]
 
 
 ROOT_URLCONF = 'api.urls'
