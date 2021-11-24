@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 import {v4 as uuidv4} from 'uuid';
 
 
@@ -21,14 +21,37 @@ export const createuser = async (e:any) => {
     return data
 }
 
-export async function axiotTest(e:any) {
-
-  const response = await axios.post(
-    'http://localhost:8000/signup/', {
+export const login = async (e:any) => {
+  const { data } = await axios({
+    method: 'post',
+    url: 'http://localhost:8000/login/',
+    data: {
       username: e['username'],
       password:e['password'],
-      password2:e['password2'],
-    });
-    console.log(response);
+    }
+  })
   
+  localStorage.clear();
+  localStorage.setItem('token', data['token'])
+  axios.defaults.headers.common['Authorization'] = `Token ${data['token']}`
+  console.log(data['token'])
+
+  return data
 }
+
+
+export const test = async (e:any) => {
+  const { data } = await axios({
+    method: 'get',
+        
+    url: 'http://localhost:8000/test/',
+  })
+
+  // localStorage.clear();
+  // localStorage.setItem('token', data.token)
+
+  console.log(data)
+
+  return data
+}
+
