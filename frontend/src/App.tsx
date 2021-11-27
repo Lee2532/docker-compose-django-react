@@ -10,7 +10,7 @@ import Home from "./pages/account/index";
 import Signup from "./pages/account/signup";
 import Login from "./pages/account/login";
 import Test from "./pages/account/test";
-import ChartTest from "./pages/chart/chattest";
+import Test2 from "./pages/chart/chattest";
 import Error from "./common/Error"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/test" element={<Test />}></Route>
-        <Route path="/charttest" element={<ChartTest />}></Route>
+        <Route path="/charttest" element={<Test2 />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

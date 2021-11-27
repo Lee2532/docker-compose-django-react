@@ -1,40 +1,35 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from "react-bootstrap";
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import CSVReader from "react-csv-reader";
 
 
-export default function ChartTest() {
-  
+export default function Test2() {
+  const handleForce = (data:any, fileInfo:any) => console.log(data, fileInfo);
 
-  return (
-    <>
-      <h1>테이블</h1>
+  const papaparseOptions = {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+    transformHeader: (header:any) => header.toLowerCase().replace(/\W/g, "_")
+  };
 
-
-      <table className="table-striped border-success">
-        <thead>
-          <tr>
-            <th data-field="id">
-              <span className="text-success">
-                Employee ID
-              </span>
-            </th>
-            <th data-field="name">
-              <span className="text-success">
-                Employee Name 
-              </span>
-            </th>
-            <th data-field="date">
-              <span className="text-success">
-                Joining Date 
-              </span>
-            </th>
-          </tr>
-        </thead>
-      </table>
-
-    </>
-  )
+  const reader = (
+    <div className="container">
+      <CSVReader
+        cssClass="react-csv-input"
+        label="Select CSV with secret Death Star statistics"
+        onFileLoaded={handleForce}
+        parserOptions={papaparseOptions}
+      />
+      <p>and then open the console</p>
+      <div>{handleForce}</div>
+    </div>
+  );
+    return(
+      <>
+      {reader}
+      </>
+      
+    )
+// ReactDOM.render(reader, document.getElementById("root"));
 }

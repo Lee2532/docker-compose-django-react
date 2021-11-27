@@ -55,3 +55,12 @@ export const test = async (e:any) => {
   return data
 }
 
+export const getData = async () => {
+  const { data } = await axios({
+    method: 'get',
+        
+    url: 'http://localhost:8000/jsondata/',
+  })
+
+  return data.data
+}

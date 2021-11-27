@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from .forms import *
 from .serializers import *
 from rest_framework import status
-
+import pandas as pd
         
 @api_view(['POST']) 
 def signup(request):
@@ -63,3 +63,11 @@ class Logout(APIView):
     def get(self, request, format=None):
         request.user.auth_token.delete()
         return Response(status=status.HTTP_200_OK)
+    
+import os
+class JsonData(APIView):
+    
+    def get(self, request):
+        data = pd.read_csv((os.path.dirname(os.path.realpath(__file__))+'/data.csv'))
+        js = data[:100].to_json(orient = 'records')
+        return JsonResponse({"data" :js})
