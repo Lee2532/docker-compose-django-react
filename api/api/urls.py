@@ -11,7 +11,8 @@ from drf_spectacular.views import SpectacularYAMLAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('account.urls')),
+    path('', include("django_prometheus.urls")),
+    path('test/', include('account.urls')),
     path("docs/json/", SpectacularJSONAPIView.as_view(), name="schema-json"),
     path("docs/yaml/", SpectacularYAMLAPIView.as_view(), name="swagger-yaml"),
     # Open API Document UI로 조회: Swagger, Redoc

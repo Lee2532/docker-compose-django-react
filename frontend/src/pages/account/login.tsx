@@ -1,8 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from "react-bootstrap";
 import { login, test } from '../../actions/test';
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 
 
 export default function Login() {

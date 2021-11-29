@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'drf_spectacular',
+    'django_prometheus',
     'rest_framework',
     'corsheaders',
     'crispy_forms', #css 보기 좋게
@@ -34,6 +35,7 @@ AUTH_USER_MODEL = 'account.User'
 
 
 MIDDLEWARE = [
+    "django_prometheus.middleware.PrometheusBeforeMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -43,6 +45,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    "django_prometheus.middleware.PrometheusAfterMiddleware",
+    
+
 ]
 
 

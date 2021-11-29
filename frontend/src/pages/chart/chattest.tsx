@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import CSVReader from "react-csv-reader";
+import { render } from "@testing-library/react";
 
 
-export default function Test2() {
-  const handleForce = (data:any, fileInfo:any) => console.log(data, fileInfo);
+export default function ReadCsv() {
+  // const handleForce = (data:any, fileInfo:any) => console.log(data, fileInfo);
+  const handleForce = (data:any) => console.log(data);
 
   const papaparseOptions = {
     header: true,
@@ -22,14 +22,16 @@ export default function Test2() {
         parserOptions={papaparseOptions}
       />
       <p>and then open the console</p>
-      <div>{handleForce}</div>
     </div>
   );
-    return(
-      <>
-      {reader}
-      </>
-      
-    )
+
+  return(
+    <>
+    {reader}
+    
+    <div>테스트</div>
+    </>
+    
+  )
 // ReactDOM.render(reader, document.getElementById("root"));
 }
