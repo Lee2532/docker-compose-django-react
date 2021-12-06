@@ -17,7 +17,8 @@ setup.kibana:
 #   hosts: ["host.docker.internal:5044"]
 
 output.elasticsearch:
-  hosts: ["http://elasticsearch:9200"]
+  # hosts: ["http://elasticsearch:9200"]
+  hosts: ["host.docker.internal:9200"]
   username: elastic
   password: changeme
   index: "filebeat-%{[beat.version]}-%{+yyyy.MM.dd}"
