@@ -11,6 +11,7 @@ urlpatterns = [
     path('test/', views.ExampleView.as_view(), name='test'), # token auth login
     path('logout/', views.Logout.as_view(), name='logout'),
     path('jsondata/', views.JsonData.as_view(), name='jsondata'),
+    path('err_500/', views.errormake, name='err_500'),
     
     
 ]

@@ -5,7 +5,7 @@ import { render } from "@testing-library/react";
 export default function ReadCsv() {
   // const handleForce = (data:any, fileInfo:any) => console.log(data, fileInfo);
   const handleForce = (data:any) => console.log(data);
-
+  
   const papaparseOptions = {
     header: true,
     dynamicTyping: true,

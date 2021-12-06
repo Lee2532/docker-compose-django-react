@@ -71,3 +71,7 @@ class JsonData(APIView):
         data = pd.read_csv((os.path.dirname(os.path.realpath(__file__))+'/data.csv'))
         js = data[:100].to_json(orient = 'records')
         return JsonResponse({"data" :js})
+
+
+def errormake(request):
+    return HttpResponse(status=500)

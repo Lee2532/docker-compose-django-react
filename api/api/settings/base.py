@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'drf_spectacular',
     'django_prometheus',
+    'django_elasticsearch_dsl', # elasitcsearch
     'rest_framework',
     'corsheaders',
     'crispy_forms', #css 보기 좋게
@@ -90,7 +91,11 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 
 DB_NAME = os.environ.get("POSTGRES_DB", None)
@@ -101,7 +106,7 @@ DB_PORT = os.environ.get("POSTGRES_PORT", None)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django_prometheus.db.backends.postgresql',
         'NAME': DB_NAME,
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
